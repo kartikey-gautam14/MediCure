@@ -84,7 +84,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        'jwtSecret',
 
         (err, token) => {
           if (err) throw err;

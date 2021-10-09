@@ -7,7 +7,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 
 const jwt = require('jsonwebtoken');
-//const config = require('config');
+const config = require('config');
 const { check, validationResult } = require('express-validator');
 const doctorschema = require('../schemas/doctor.js');
 
@@ -24,8 +24,8 @@ const doctorschema = require('../schemas/doctor.js');
 
 router.post(
     '/',
-    check('username', 'Please include a valid email').exists(),
-    check('password', 'Password is required').exists(),
+    check('Username', 'Please include a valid email').exists(),
+    check('Password', 'Password is required').exists(),
     async (req, res) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -43,7 +43,8 @@ router.post(
             .json({ errors: [{ msg: 'Invalid Credentials' }] });
         }
   
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch  = password === user.password;
+        //const isMatch = await bcrypt.compare(password, user.password);
   
         if (!isMatch) {
           return res
@@ -59,7 +60,7 @@ router.post(
   
         jwt.sign(
           payload,
-          config.get('jwtSecret'),
+          ('jwtSecret'),
           { expiresIn: '5 days' },
           (err, token) => {
             if (err) throw err;
