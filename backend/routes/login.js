@@ -1,14 +1,15 @@
 // import { createRequire } from "module";
 // const require = createRequire(import.meta.url);
 const express = require('express');
+const path = require('path');
 
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 
 const jwt = require('jsonwebtoken');
-const config = require('config');
+//const config = require('config');
 const { check, validationResult } = require('express-validator');
-//const doctorschema = require('../schemas/doctor.cjs');
+const doctorschema = require('../schemas/doctor.js');
 
 // import express from 'express';
 // import bcrypt from 'bcryptjs';
@@ -42,7 +43,7 @@ router.post(
             .json({ errors: [{ msg: 'Invalid Credentials' }] });
         }
   
-        const isMatch = await (password === user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
   
         if (!isMatch) {
           return res
