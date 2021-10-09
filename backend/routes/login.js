@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
-const doctorschema = require('../schemas/doctor.cjs');
+//const doctorschema = require('../schemas/doctor.cjs');
 
 // import express from 'express';
 // import bcrypt from 'bcryptjs';
@@ -17,7 +17,7 @@ const doctorschema = require('../schemas/doctor.cjs');
 // import pkg from 'express-validator';
 //const { check, validationResult } = pkg;
 //import { check, validationResult } from 'express-validator';
-//import doctorschema from '../schemas/doctor.js';
+import doctorschema from '../schemas/doctor.js';
 
 //const router = express.Router();
 

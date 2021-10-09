@@ -3,13 +3,13 @@
 const express = require('express');
 
 const PORT = 3000;
-const login = require('./routes/login')
-const register = require('./routes/register')
+//const login = require('./routes/login')
+//const register = require('./routes/register')
 
 const app = express();
 // import express from 'express';
-// import login from './routes/login.js';
-// import register from './routes/register.js';
+ import login from '/routes/login.js';
+ import register from '/routes/register.js';
 
 // import mongoose from 'mongoose';
 //const mongoose = require('mongoose');
