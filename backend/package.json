@@ -2,16 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
-  "main": "index.cjs",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-=======
   "main": "server.js",
->>>>>>> 7618775c3ce25c89d76046feb220cd27d2d2823b
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
@@ -21,9 +12,6 @@
     "mongoose": "^6.0.10",
     "nodemon": "^2.0.13",
     "normalize-url": "^7.0.2"
-<<<<<<< HEAD
-  }
-=======
   },
   "devDependencies": {},
   "scripts": {
@@ -31,5 +19,4 @@
   },
   "author": "",
   "license": "ISC"
->>>>>>> 7618775c3ce25c89d76046feb220cd27d2d2823b
 }
