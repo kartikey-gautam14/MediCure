@@ -28,3 +28,10 @@ app.listen(3000,()=>{
 })
 app.use("/login",login);
 app.use("/register",register);
+
+// //app.post("/login",(req,res)=>{
+// get data from req    
+// run queries in database
+// send response
+    
+// }
