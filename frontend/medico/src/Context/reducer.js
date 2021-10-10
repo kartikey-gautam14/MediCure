@@ -4,25 +4,40 @@ export const initialState = {
     token: null,
   };
 
- export const reducer = (state, action) => {
-    switch (action.type) {
-      case "LOGIN":
-        localStorage.setItem("user", JSON.stringify(action.payload.user));
-        localStorage.setItem("token", JSON.stringify(action.payload.token));
-        return {
-          ...state,
-          isAuthenticated: true,
-          user: action.payload.user,
-          token: action.payload.token
-        };
-      case "LOGOUT":
-        localStorage.clear();
-        return {
-          ...state,
-          isAuthenticated: false,
-          user: null
-        };
-      default:
-        return state;
-    }
+ export const authreducer = (state = initialState, action) => {
+    const { type, payload } = action;
+    switch (type) {
+       
+
+        
+          case "USER_LOADED":
+            return {
+              ...state,
+              isAuthenticated: true,
+              loading: false,
+              user: payload
+            };
+          case "REGISTER_SUCCESS":
+          case "LOGIN_SUCCESS":
+            return {
+              ...state,
+              ...payload,
+              isAuthenticated: true,
+              loading: false
+            };
+          case "ACCOUNT_DELETED":
+          case "AUTH_ERROR":
+          case "LOGOUT":
+            return {
+              ...state,
+              token: null,
+              isAuthenticated: false,
+              loading: false,
+              user: null
+            };
+          default:
+            return state;
+        }
+    
   };
+  export default authreducer;

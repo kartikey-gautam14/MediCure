@@ -2,13 +2,16 @@
 // const require = createRequire(import.meta.url);
 const express = require('express');
 const path = require('path');
+var cors = require('cors')
 
-const PORT = 3000;
+const PORT = 5000;
 const login = require('./routes/login')
 const register = require('./routes/register')
 
 
+
 const app = express();
+app.use(cors())
 app.use(express.json());
 // import express from 'express';
 // import login from './routes/login.js';
@@ -22,7 +25,7 @@ mongoose.connect('mongodb://localhost:27017/mediCure')
     .catch(err => console.error('Something went wrong', err));
 
 
-app.listen(3000,()=>{
+app.listen(5000,()=>{
     console.log(`server is running on port ${PORT}`);
 
 })

@@ -47,7 +47,7 @@ router.post(
     console.log(name,username,password);
 
     try {
-      let user = await doctorschema.findOne({ username });
+      let user = await doctorschema.findOne({ Username : username });
 
       if (user) {
         return res
