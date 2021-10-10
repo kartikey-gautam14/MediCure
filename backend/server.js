@@ -14,8 +14,8 @@ const app = express();
 app.use(cors())
 app.use(express.json());
 // import express from 'express';
-// import login from './routes/login.js';
-// import register from './routes/register.js';
+//  import login from '/routes/login.js';
+//  import register from '/routes/register.js';
 
 // import mongoose from 'mongoose';
 const mongoose = require('mongoose');

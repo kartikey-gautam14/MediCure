@@ -19,7 +19,7 @@ const doctorschema = require('../schemas/doctor.js');
 // import pkg from 'express-validator';
 // const { check, validationResult } = pkg;
 // //import { check, validationResult } from 'express-validator';
-// import doctorschema from '../schemas/doctor.js';
+ //import doctorschema from '../schemas/doctor.js';
 // import normalize from 'normalize-url';
 
 //const router = express.Router();
