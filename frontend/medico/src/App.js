@@ -1,13 +1,13 @@
 
 import './App.css';
 import { UserProvider } from "./Context/Provider";
-import Header from './Components/Header'
+import Pregister from './Components/Pregister'
 import Register from './Components/Register'
 
 function App() {
   return (
     <UserProvider>
-      <Header />
+      <Pregister />
       <Register/>
       
     </UserProvider>

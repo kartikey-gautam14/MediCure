@@ -7,6 +7,8 @@ var cors = require('cors')
 const PORT = 5000;
 const login = require('./routes/login')
 const register = require('./routes/register')
+const patientlogin = require('./routes/patientlogin');
+const patientregister = require('./routes/patientregister');
 
 
 
@@ -31,6 +33,9 @@ app.listen(5000,()=>{
 })
 app.use("/login",login);
 app.use("/register",register);
+app.use("/plogin",patientlogin);
+app.use("/pregister",patientregister);
+
 
 // //app.post("/login",(req,res)=>{
 // get data from req    
