@@ -33,8 +33,9 @@ const Login = () => {
             
             Username : email,
             Password:password,
-        }).then((res)=>console.log(res));
-          dispatch({ type: "LOGIN_SUCCESS" })
+        }).then((res)=>{      localStorage.setItem('token',res.data.token)
+                              console.log(res.data.token)})
+         .then(dispatch({ type: "DLOGIN_SUCCESS" }));
         
       
     };

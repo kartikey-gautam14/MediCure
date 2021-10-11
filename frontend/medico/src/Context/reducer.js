@@ -2,6 +2,7 @@ export const initialState = {
     isAuthenticated: false,
     user: null,
     token: null,
+    doctor: false,
   };
 
  export const authreducer = (state = initialState, action) => {
@@ -25,6 +26,13 @@ export const initialState = {
               isAuthenticated: true,
               loading: false
             };
+          case "DREGISTER_SUCCESS":
+          case "DLOGIN_SUCCESS" :
+            return{
+              ...state,
+              isAuthenticated:true,
+              doctor:true,
+            }
           case "ACCOUNT_DELETED":
           case "AUTH_ERROR":
           case "LOGOUT":

@@ -9,7 +9,7 @@ import { UserContext } from '../Context/Provider';
 import Home from './Home';
 
 function AuthRouter() {
-    const [state,dispatch] = useContext(UserContext);
+    const [state] = useContext(UserContext);
     return (
        
             <Router>

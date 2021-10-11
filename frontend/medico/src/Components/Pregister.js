@@ -37,8 +37,9 @@ const Pregister = () => {
             Name : name,
             Username : email,
             Password:password,
-        }).then((res)=>console.log(res));
-          dispatch({ type: "REGISTER_SUCCESS" })
+        }).then((res)=>{      localStorage.setItem('token',res.data.token)
+        console.log(res.data.token)})
+.then(dispatch({ type: "REGISTER_SUCCESS" }));
         
       }
     };

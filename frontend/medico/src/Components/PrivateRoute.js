@@ -1,10 +1,10 @@
-import React,{useContext} from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import {UserContext} from '../Context/Provider'
+//import {UserContext} from '../Context/Provider'
 
 const PrivateRoute = ({component: Component},...rest) => {
-    const [state,dispatch] = useContext(UserContext);
+   // const [state] = useContext(UserContext);
     return (
 
         // Show the component only when the user is logged in
