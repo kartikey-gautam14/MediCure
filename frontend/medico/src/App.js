@@ -1,14 +1,18 @@
-
+import React from 'react';
 import './App.css';
 import { UserProvider } from "./Context/Provider";
-import Pregister from './Components/Pregister'
-import Register from './Components/Register'
+//import {UserContext} from "./Context/Provider";
+
+import AuthRouter from './Components/AuthRouter';
+
 
 function App() {
+  
   return (
     <UserProvider>
-      <Pregister />
-      <Register/>
+      
+      
+      <AuthRouter  />
       
     </UserProvider>
   );

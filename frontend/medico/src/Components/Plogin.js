@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React, { Fragment, useState ,useContext} from 'react';
 // import register from '../Actions/auth';
@@ -8,20 +7,20 @@ import {  Redirect } from 'react-router-dom';
 //import { Link, Redirect } from 'react-router-dom';
 //import { register } from '../../actions/auth';
 
-const Register = () => {
+const Plogin = () => {
      const [state,dispatch] = useContext(UserContext);
      console.log(state);
      
 
      
     const [formData, setFormData] = useState({
-      name: '',
+    
       email: '',
       password: '',
-      password2: ''
+      
     });
   
-    const { name, email, password, password2 } = formData;
+    const { email, password } = formData;
     
   
     const onChange = (e) =>
@@ -29,18 +28,16 @@ const Register = () => {
   
     const onSubmit = async (e) => {
       e.preventDefault();
-      if (password !== password2) {
-        console.log('Passwords do not match danger');
-      } else {
-          //
-          axios.post("http://localhost:5000/register",{
-            Name : name,
+      
+          
+          axios.post("http://localhost:5000/plogin",{
+            
             Username : email,
             Password:password,
         }).then((res)=>console.log(res));
-          dispatch({ type: "REGISTER_SUCCESS" })
+          dispatch({ type: "LOGIN_SUCCESS" })
         
-      }
+      
     };
   
     if (state.isAuthenticated) {
@@ -49,24 +46,16 @@ const Register = () => {
   
     return (
       <Fragment>
-        <h1 className="large text-primary"> Patient Sign Up</h1>
+        <h1 className="large text-primary"> Doctor Sign Up</h1>
         <p className="lead">
           <i className="fas fa-user" /> Create Your Account
         </p>
         <form className="form" onSubmit={onSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              value={name}
-              onChange={onChange}
-            />
-          </div>
+         
           <div className="form-group">
             <input
               type="email"
-              placeholder="Email Address"
+              placeholder="Username"
               name="email"
               value={email}
               onChange={onChange}
@@ -85,15 +74,7 @@ const Register = () => {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              name="password2"
-              value={password2}
-              onChange={onChange}
-            />
-          </div>
+          
           <input type="submit" className="btn btn-primary" value="Register" />
         </form>
         <p className="my-1">
@@ -102,4 +83,4 @@ const Register = () => {
       </Fragment>
     );
   };
-export default Register
+export default Plogin

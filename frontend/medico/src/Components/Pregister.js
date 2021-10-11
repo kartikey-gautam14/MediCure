@@ -1,9 +1,10 @@
 
 import axios from 'axios';
 import React, { Fragment, useState ,useContext} from 'react';
-import register from '../Actions/auth';
+// import register from '../Actions/auth';
 //import authreducer from '../Context/reducer';
 import { UserContext } from '../Context/Provider';
+import {  Redirect } from 'react-router-dom';
 //import { Link, Redirect } from 'react-router-dom';
 //import { register } from '../../actions/auth';
 
@@ -21,7 +22,7 @@ const Pregister = () => {
     });
   
     const { name, email, password, password2 } = formData;
-    const username = email;
+    
   
     const onChange = (e) =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,13 +43,13 @@ const Pregister = () => {
       }
     };
   
-    // if (isAuthenticated) {
-    //   return <Redirect to="/dashboard" />;
-    // }
+    if (state.isAuthenticated) {
+      return <Redirect to="/home" />;
+    }
   
     return (
       <Fragment>
-        <h1 className="large text-primary">Sign Up</h1>
+        <h1 className="large text-primary"> Doctor Sign Up</h1>
         <p className="lead">
           <i className="fas fa-user" /> Create Your Account
         </p>
