@@ -54,7 +54,7 @@ const Login = () => {
          
           <div className="form-group">
             <input
-              type="email"
+              
               placeholder="Username"
               name="email"
               value={email}

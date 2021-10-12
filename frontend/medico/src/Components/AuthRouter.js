@@ -7,6 +7,7 @@ import Plogin from './Plogin';
 //import PrivateRoute from './PrivateRoute';
 import { UserContext } from '../Context/Provider';
 import Home from './Home';
+import Doctors from './Patientcomp/Doctors';
 
 function AuthRouter() {
     const [state] = useContext(UserContext);
@@ -25,6 +26,7 @@ function AuthRouter() {
                     <Route path = "/login" > <Login/></Route>
                     <Route path = "/plogin"> <Plogin/></Route>
                     <Route path = "/home"> <Home/> </Route>
+                    <Route path = "/doctors" component = {Doctors}/>
                 </Switch>
 
 
