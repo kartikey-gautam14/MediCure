@@ -21,16 +21,7 @@ const UserSchema = mongoose.Schema({
         type : String,
         required : true,
     }, 
-    // Location: {
-    //      longitude :{
-    //          type : Number,
-    //          required : true,
-    //      },
-    //      lattitude:{
-    //          type : Number,
-    //          required : true,
-    //      }
-    // }, 
+    Appointments:[{doctor:String}] 
     
 });
 module.exports = mongoose.model('patientschema',UserSchema);
