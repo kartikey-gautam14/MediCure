@@ -1,8 +1,19 @@
-export const initialState = {
-    isAuthenticated: false,
-    user: null,
+
+  import {
+    LOGIN_SUCCESS,
+    REGISTER_SUCCESS,
+    USER_LOADED,
+    ACCOUNT_DELETED,
+    AUTH_ERROR,
+    LOGOUT
+
+  } from './actiontypes';
+  export const initialState = {
+    isAuthenticated: localStorage.getItem('token'),
+   
     token: null,
-    doctor: false,
+    loading : true,
+    
   };
 
  export const authreducer = (state = initialState, action) => {
@@ -11,41 +22,69 @@ export const initialState = {
        
 
         
-          case "USER_LOADED":
+          case USER_LOADED:
             return {
               ...state,
               isAuthenticated: true,
               loading: false,
-              user: payload
+             
             };
-          case "REGISTER_SUCCESS":
-          case "LOGIN_SUCCESS":
+          case REGISTER_SUCCESS:
+          case LOGIN_SUCCESS:
             return {
               ...state,
               ...payload,
               isAuthenticated: true,
               loading: false
             };
-          case "DREGISTER_SUCCESS":
-          case "DLOGIN_SUCCESS" :
-            return{
-              ...state,
-              isAuthenticated:true,
-              doctor:true,
-            }
-          case "ACCOUNT_DELETED":
-          case "AUTH_ERROR":
-          case "LOGOUT":
+          
+         
+          case ACCOUNT_DELETED:
+          case AUTH_ERROR:
+          case LOGOUT:
             return {
               ...state,
               token: null,
               isAuthenticated: false,
               loading: false,
-              user: null
+            
             };
           default:
             return state;
         }
     
   };
-  export default authreducer;
+  export const doctorauthreducer = (state = initialState,action) => {
+    const {type,payload} = action;
+
+    switch(type) {
+      case USER_LOADED :
+        return{
+          ...state,
+          isAuthenticated:true,
+          loading :false,
+         
+
+        }
+        case REGISTER_SUCCESS :
+        case LOGIN_SUCCESS :
+          return{
+            ...state,
+            isAuthenticated:true,
+            loading: false,
+
+          }
+        case ACCOUNT_DELETED : 
+        case AUTH_ERROR:
+        case LOGOUT:
+          return{
+            ...state,
+            token:null,
+            isAuthenticated:true,
+            loading :true,
+            
+          }
+    }
+
+  }
+  

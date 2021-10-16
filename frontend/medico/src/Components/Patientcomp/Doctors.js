@@ -3,6 +3,8 @@ import {Card,CardContent} from '@material-ui/core';
 import axios from 'axios';
 
 function Doctors() {
+
+
     
     const [doctors,setdoctors] = useState([
         {
@@ -34,6 +36,15 @@ function Doctors() {
         })
 
     }
+    const upload = e =>{
+        let files = {
+            username : "kartikeygautam",
+            files : e.target.files[0],
+    }
+    axios.post("http://localhost:5000/uploadtopatient",files).then((res)=>{
+        console.log(res);
+    })
+    }
     return (
         <div>
             {doctors.map((data)=>{
@@ -44,6 +55,11 @@ function Doctors() {
                     </CardContent>
                 </Card>
             })}
+
+<div>
+  <label for="formFileLg" class="form-label">Large file input example</label>
+  <input className="form-control form-control-lg" id="formFileLg" type="file" onchange = {upload}/>
+</div>
             
         </div>
     )

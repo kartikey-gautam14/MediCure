@@ -2,12 +2,15 @@ import axios from 'axios';
 import React, { Fragment, useState ,useContext} from 'react';
 // import register from '../Actions/auth';
 //import authreducer from '../Context/reducer';
-import { UserContext } from '../Context/Provider';
+import { DoctorContext } from '../../Context/Provider.js';
 import {  Redirect } from 'react-router-dom';
+import { LOGIN_SUCCESS } from '../../Context/actiontypes.js';
+import {Link} from 'react-router-dom';
 //import { register } from '../../actions/auth';
 
 const Login = () => {
-     const [state,dispatch] = useContext(UserContext);
+     const [state,dispatch] = useContext(DoctorContext);
+     
      
      
 
@@ -35,19 +38,18 @@ const Login = () => {
             Password:password,
         }).then((res)=>{      localStorage.setItem('token',res.data.token)
                               console.log(res.data.token)})
-         .then(dispatch({ type: "DLOGIN_SUCCESS" }));
+         .then(dispatch({ type: LOGIN_SUCCESS }));
         
       
     };
   
      if (state.isAuthenticated) {
-       return <Redirect to="/home" />;
+       return <Redirect to="/docauth/home" />;
      }
   
     return (
       <Fragment>
-        
-        <h1 className="large text-primary"> Doctor Sign Up</h1>
+        <h1 className="large text-primary"> Doctor Sign In</h1>
         <p className="lead">
           <i className="fas fa-user" /> Create Your Account
         </p>
@@ -55,16 +57,13 @@ const Login = () => {
          
           <div className="form-group">
             <input
-              
+              type = "text"
               placeholder="Username"
               name="email"
               value={email}
               onChange={onChange}
             />
-            <small className="form-text">
-              This site uses Gravatar so if you want a profile image, use a
-              Gravatar email
-            </small>
+            
           </div>
           <div className="form-group">
             <input
@@ -76,12 +75,13 @@ const Login = () => {
             />
           </div>
           
-          <input type="submit" className="btn btn-primary" value="Register" />
+          <input type="submit" className="btn btn-primary" value="Login" />
         </form>
+        
         <p className="my-1">
-          {/* Already have an account? <Link to="/login">Sign In</Link> */}
+          Already have an account? <Link to="/doctorauth/register">Sign Up</Link>
         </p>
       </Fragment>
     );
   };
-export default Login
+export default Login;

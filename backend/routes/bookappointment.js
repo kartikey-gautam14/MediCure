@@ -23,7 +23,7 @@ async (req,res)=>{
           );
           console.log(doc);
 
-          let docu = await doctorschema.findOneAndUpdate(
+          let docu = await patientschema.findOneAndUpdate(
             { Username: Username },
             { $push: {Appointments : {doctor : doctor}} },
             { new: true, upsert: true, setDefaultsOnInsert: true }

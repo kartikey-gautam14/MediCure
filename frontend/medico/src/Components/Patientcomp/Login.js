@@ -2,13 +2,15 @@ import axios from 'axios';
 import React, { Fragment, useState ,useContext} from 'react';
 // import register from '../Actions/auth';
 //import authreducer from '../Context/reducer';
-import { UserContext } from '../Context/Provider';
-import {  Redirect } from 'react-router-dom';
+import { UserContext } from '../../Context/Provider';
+//import {  Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 //import { register } from '../../actions/auth';
+import { LOGIN_SUCCESS } from '../../Context/actiontypes';
 
-const Login = () => {
+const PLogin = () => {
      const [state,dispatch] = useContext(UserContext);
-     
+    
      
 
      
@@ -29,25 +31,25 @@ const Login = () => {
       e.preventDefault();
       
           
-          axios.post("http://localhost:5000/login",{
+          axios.post("http://localhost:5000/plogin",{
             
             Username : email,
             Password:password,
-        }).then((res)=>{      localStorage.setItem('token',res.data.token)
-                              console.log(res.data.token)})
-         .then(dispatch({ type: "DLOGIN_SUCCESS" }));
+        }).then((res)=>{  
+             localStorage.setItem('token',res.data.token)
+        console.log(res.data.token)})
+.then(dispatch({ type: LOGIN_SUCCESS }));
         
       
     };
   
-     if (state.isAuthenticated) {
-       return <Redirect to="/home" />;
-     }
+    if (state.isAuthenticated) {
+      return <Redirect to="/patientauth/home" />;
+    }
   
     return (
       <Fragment>
-        
-        <h1 className="large text-primary"> Doctor Sign Up</h1>
+        <h1 className="large text-primary"> Patient Sign In</h1>
         <p className="lead">
           <i className="fas fa-user" /> Create Your Account
         </p>
@@ -55,7 +57,7 @@ const Login = () => {
          
           <div className="form-group">
             <input
-              
+              type="text"
               placeholder="Username"
               name="email"
               value={email}
@@ -76,12 +78,12 @@ const Login = () => {
             />
           </div>
           
-          <input type="submit" className="btn btn-primary" value="Register" />
+          <input type="submit" className="btn btn-primary" value="Login" />
         </form>
         <p className="my-1">
-          {/* Already have an account? <Link to="/login">Sign In</Link> */}
+          Already have an account? <Link to="/patientauth/register">Sign Up</Link>
         </p>
       </Fragment>
     );
   };
-export default Login
+export default PLogin;

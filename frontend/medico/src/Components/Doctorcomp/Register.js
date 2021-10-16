@@ -1,25 +1,28 @@
+
 import axios from 'axios';
 import React, { Fragment, useState ,useContext} from 'react';
 // import register from '../Actions/auth';
 //import authreducer from '../Context/reducer';
-import { UserContext } from '../Context/Provider';
+import { DoctorContext } from '../../Context/Provider';
 import {  Redirect } from 'react-router-dom';
-//import { register } from '../../actions/auth';
+import { Link} from 'react-router-dom';
+// import { register } from '../../actions/auth';
+import { REGISTER_SUCCESS } from '../../Context/actiontypes';
 
-const Login = () => {
-     const [state,dispatch] = useContext(UserContext);
+const Register = () => {
+     const [state,dispatch] = useContext(DoctorContext);
      
      
 
      
     const [formData, setFormData] = useState({
-    
+      name: '',
       email: '',
       password: '',
-      
+      password2: ''
     });
   
-    const { email, password } = formData;
+    const { name, email, password, password2 } = formData;
     
   
     const onChange = (e) =>
@@ -27,36 +30,45 @@ const Login = () => {
   
     const onSubmit = async (e) => {
       e.preventDefault();
-      
-          
-          axios.post("http://localhost:5000/login",{
-            
+      if (password !== password2) {
+        console.log('Passwords do not match danger');
+      } else {
+          //
+          axios.post("http://localhost:5000/register",{
+            Name : name,
             Username : email,
             Password:password,
         }).then((res)=>{      localStorage.setItem('token',res.data.token)
-                              console.log(res.data.token)})
-         .then(dispatch({ type: "DLOGIN_SUCCESS" }));
+        console.log(res.data.token)})
+          .then(dispatch({ type: REGISTER_SUCCESS }));
         
-      
+      }
     };
   
-     if (state.isAuthenticated) {
-       return <Redirect to="/home" />;
-     }
+    if (state.isAuthenticated) {
+      return <Redirect to="/doctorauth/home" />;
+    }
   
     return (
       <Fragment>
-        
         <h1 className="large text-primary"> Doctor Sign Up</h1>
         <p className="lead">
           <i className="fas fa-user" /> Create Your Account
         </p>
         <form className="form" onSubmit={onSubmit}>
-         
           <div className="form-group">
             <input
-              
-              placeholder="Username"
+              type="text"
+              placeholder="Name"
+              name="name"
+              value={name}
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Email Address"
               name="email"
               value={email}
               onChange={onChange}
@@ -75,13 +87,21 @@ const Login = () => {
               onChange={onChange}
             />
           </div>
-          
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="password2"
+              value={password2}
+              onChange={onChange}
+            />
+          </div>
           <input type="submit" className="btn btn-primary" value="Register" />
         </form>
         <p className="my-1">
-          {/* Already have an account? <Link to="/login">Sign In</Link> */}
+          Already have an account? <Link to="/doctorauth">Sign IN</Link>
         </p>
       </Fragment>
     );
   };
-export default Login
+export default Register

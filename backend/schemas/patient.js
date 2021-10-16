@@ -21,7 +21,8 @@ const UserSchema = mongoose.Schema({
         type : String,
         required : true,
     }, 
-    Appointments:[{doctor:String}] 
+    Appointments:[{doctor:String}], 
+    MedicalReports :[Buffer]
     
 });
 module.exports = mongoose.model('patientschema',UserSchema);

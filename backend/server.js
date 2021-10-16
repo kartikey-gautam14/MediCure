@@ -10,6 +10,7 @@ const register = require('./routes/register')
 const patientlogin = require('./routes/patientlogin');
 const patientregister = require('./routes/patientregister');
 const bookappointments = require('./routes/bookappointment');
+const uploadtopatient = require('./routes/uploadtopatient');
 
 
 
@@ -37,6 +38,7 @@ app.use("/register",register);
 app.use("/plogin",patientlogin);
 app.use("/pregister",patientregister);
 app.use("/bookap",bookappointments);
+app.use("/uploadtop",uploadtopatient);
 
 
 // //app.post("/login",(req,res)=>{

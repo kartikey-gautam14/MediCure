@@ -32,10 +32,10 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
   
-      const { username, password } = req.body;
+      const { Username, Password } = req.body;
   
       try {
-        let user = await patientschema.findOne({ Username : username });
+        let user = await patientschema.findOne({ Username : Username });
   
         if (!user) {
           return res
@@ -43,7 +43,7 @@ router.post(
             .json({ errors: [{ msg: 'Invalid Credentials' }] });
         }
   
-        const isMatch  = password === user.password;
+        const isMatch  = Password === user.Password;
         //const isMatch = await bcrypt.compare(password, user.password);
   
         if (!isMatch) {
