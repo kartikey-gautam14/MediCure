@@ -11,6 +11,7 @@ import DoctorRoutes from './Components/Routing/DoctorRoutes'
 import Register from './Components/Doctorcomp/Register'
 import PRegister from './Components/Patientcomp/Register';
 import PLogin from './Components/Patientcomp/Login';
+import Dashboard from './Components/Doctorcomp/Dashboard';
 
 
 
@@ -38,6 +39,7 @@ function App() {
       <Route exact path = "/doctorauth"><DocHome/></Route>
       <Route exact path = "/doctorauth/register" component = {Register}/>
       <Route exact path = "/patientauth/register" component = {PRegister}/>
+      <Route exact path = "/doctorauth/home" component = {Dashboard}/>
       {/* <Route exact path = "/doctorauth/home" component = {PatHome}/> */}
       <Route component = {DoctorRoutes}/>
       <Route component = {Routes}/>

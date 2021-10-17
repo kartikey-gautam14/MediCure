@@ -5,13 +5,9 @@ const {check,validationResult} = require('express-validator');
 const doctorschema = require('../schemas/doctor');
 const patientschema = require('../schemas/patient'); 
 
-router.post("/",check('doctor','This shit has no doctor id bitch').exists(),
-check('Username', 'Aint you gonna provide me your username nigga').exists(),
+router.post("/",
 async (req,res)=>{
-    var errors = validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(400).json({errors:errors.array()});
-    }
+    
     var {doctor,Username} = req.body;
     console.log(doctor,Username);
     try{
