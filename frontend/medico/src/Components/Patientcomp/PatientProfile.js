@@ -6,31 +6,45 @@ import axios from 'axios';
 
 function PatientProfile() {
     const [formdata,setformdata] = useState({
-      name : "a",
-      phone_no :0,
-      gender : "male",
+      name : "",
+      phone_no : 0,
       age : 0,
-     
-      bloodgroup : "B+",
+      gender : "",
       pincode : 0,
+      bloodgroup : "",
+     
 
 
     })
-    const {name,phone_no,gender,age,address,bloodgroup,pincode} = formdata;
+    const {name,phone_no,gender,age,bloodgroup,pincode} = formdata;
 
     const handlechange = (e) => {
-      setformdata({[e.target.id] : e.target.value});
+      setformdata({...formdata,[e.target.name] : e.target.value});
     }
     const onSubmit = async (e) => {
 
       e.preventDefault();
       let addressobj = await axios.get(`https://api.postalpincode.in/pincode/${pincode}`);
-      if(addressobj[0].status === "Error"){
-        console.log(addressobj);
-      }
+      console.log(addressobj);
+     
+     
       
       console.log(formdata);
-      const profile_update = await axios.post("http://localhost:5000/userprofile",formdata,{
+      const payload = {
+        name : name,
+        phone_no : phone_no,
+        age : age,
+        gender : gender,
+        pincode : pincode,
+        bloodgroup : bloodgroup,
+        
+        address : {
+          state :addressobj.data[0].State,
+          district : addressobj.data[0].District,
+        }
+        
+      }
+      const profile_update = await axios.post("http://localhost:5000/updateuserprofile",payload,{
 
         headers: {
   
@@ -43,6 +57,7 @@ function PatientProfile() {
       });
 
       console.log(profile_update);
+    
 
 
 
@@ -55,112 +70,92 @@ function PatientProfile() {
 
 
     return (
-        <form className="myform" onSubmit = {onSubmit} >
-          
-        <div className = "update-profile">
-       
-             
-            <TextField  id="name" value = {name}  onChange = {handlechange} variant="standard" />
-            <TextField
-          id="phone_no"
-          
-          type="number"
-          value = {phone_no}
-          onChange = {handlechange}
-          InputLabelProps={{
-            shrink: true,
-            maxLength : 12
-          }}
-        />
-        <Select labelId="demo-simple-select-helper-label"id="demo-simple-select-helper"value={age}label="Age" onChange={handlechange}><MenuItem value=""><em>None</em></MenuItem><MenuItem value={10}>Ten</MenuItem><MenuItem value={20}>Twenty</MenuItem><MenuItem value={30}>Thirty</MenuItem></Select>
         
-        
-            <Select
+        <form onSubmit = {onSubmit}>
+          <div className = "update-profile">
+            <div>
+            <input 
+            name = "name"
+            type = "text"
+            value = {name}
+            onChange = {handlechange}
+            placeholder = "enter your name"
             
-          id="gender"
+            />
+            </div>
+            <div>
+             <input 
+            name = "phone_no"
+            type = "number"
+            value = {phone_no}
+            onChange = {handlechange}
+            placeholder = "enter your phone_no"
+            />
+            </div>
+            <div>
+            
+            <input 
+            name = "age"
+            type = "number"
+            
+            value = {age}
+            onChange = {handlechange}
+            placeholder = "enter your age"
+            
+            />
+            </div>
+            <input 
+            name = "pincode"
+            type = "number"
+            value = {pincode}
+            onChange = {handlechange}
+            placeholder = "enter your pincode"
+            
+            />
+              
           
-          
-          value={gender}
-          onChange={ handlechange}
-        //   onChange={handleChange}
-          
-        >
-          <MenuItem key = "1" value="">None</MenuItem>
-          
-            <MenuItem key="male" value={"male"}>
-              male
-            </MenuItem>
-            <MenuItem key="female" value={"female"}>
-              female
-            </MenuItem>
-            <MenuItem key="others" value={"others"}>
-              others
-            </MenuItem>
-          
-        </Select>
-        
-        <TextField
-          id="age"
-          
-          type="number"
-          value = {age}
-          onChange = {handlechange}
-          
-        />
-        
-        
-         <Select
-          id="bloodgroup"
-          type = "text"
-          
-          
-          value={bloodgroup}
-          onChange={ handlechange}
-          
-        >
-          
-            <MenuItem key="A+" value={"A+"}>
-              A+
-            </MenuItem>
-            <MenuItem key="A-" value={"A-"}>
-              A-
-            </MenuItem>
-            <MenuItem key="AB+" value={"AB+"}>
-              AB+
-            </MenuItem>
-            <MenuItem key="AB-" value={"AB-"}>
-              AB-
-            </MenuItem>
-            <MenuItem key="O-" value={"O-"}>
-              O-
-            </MenuItem>
-            <MenuItem key="O+" value={"O+"}>
-              O+
-            </MenuItem>
-            <MenuItem key="B+" value={"B+"}>
-              B+
-            </MenuItem>
-            <MenuItem key="B-" value={"B-"}>
-              B-
-            </MenuItem>
-          
-        </Select>
-        
-        <TextField
-          id="pincode"
-          
-          type="number"
-          value = {pincode}
-          onChange = {handlechange}
-         
-        />
-        
-        <input type = "submit" value = "update"/>
-         
+        <select name = "bloodgroup" placeholder = "enter your blood group" value = {bloodgroup} onChange = {handlechange} >
 
+        <option  value="A+">
+          A+
+        </option>
+        <option  value="A-">
+          A-
+        </option>
+        <option  value="AB+">
+          AB+
+        </option>
+        <option  value="AB-">
+          AB-
+        </option>
+        <option  value="O-">
+          O-
+        </option>
+        <option  value="O+">
+          O+
+        </option>
+        <option  value="B+">
+          B+
+        </option>
+        <option  value="B-">
+          B-
+        </option>
+        </select>
+        <select name = "gender" placeholder = "enter your gender" value = {gender} onChange = {handlechange} >
+
+        <option  value="male">
+         male
+        </option>
+        <option  value="female">
+          female
+        </option>
+        <option  value="others">
+         others
+        </option>
         
-        
-        </div>
+        </select>
+        <button type = "submit" >Update</button>
+          </div>
         </form>
     )
 }
