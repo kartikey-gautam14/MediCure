@@ -7,7 +7,7 @@ import Plogin from './Plogin';
 //import PrivateRoute from './PrivateRoute';
 import { UserContext } from '../Context/Provider';
 import Home from './Home';
-import Doctors from './Patientcomp/Doctors';
+import Doctors from './Patientcomp/Seedoctors';
 
 function AuthRouter() {
     const [state] = useContext(UserContext);

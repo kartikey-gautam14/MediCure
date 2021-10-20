@@ -11,6 +11,7 @@ const patientlogin = require('./routes/patientlogin');
 const patientregister = require('./routes/patientregister');
 const bookappointments = require('./routes/bookappointment');
 const uploadtopatient = require('./routes/uploadtopatient');
+const updateuserprofile = require('./routes/updateuserprofile');
 
 
 
@@ -39,6 +40,7 @@ app.use("/plogin",patientlogin);
 app.use("/pregister",patientregister);
 app.use("/bookap",bookappointments);
 app.use("/uploadtop",uploadtopatient);
+app.use("/updateuserprofile",updateuserprofile);
 
 
 // //app.post("/login",(req,res)=>{

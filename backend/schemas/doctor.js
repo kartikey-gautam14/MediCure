@@ -21,7 +21,12 @@ const UserSchema = mongoose.Schema({
         type : String,
         required : true,
     }, 
-    Appointments :[{username : String}],
+    City : {
+        type : String,
+        required : true,
+    }
+  
+    
     
 });
 module.exports = mongoose.model('doctorschema',UserSchema);

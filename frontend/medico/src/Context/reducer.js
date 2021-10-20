@@ -35,7 +35,8 @@
               ...state,
               ...payload,
               isAuthenticated: true,
-              loading: false
+              loading: false,
+              token : localStorage.getItem('token')
             };
           
          
@@ -63,6 +64,8 @@
           ...state,
           isAuthenticated:true,
           loading :false,
+         token : localStorage.getItem('token')
+          
          
 
         }
@@ -72,6 +75,7 @@
             ...state,
             isAuthenticated:true,
             loading: false,
+            token : localStorage.getItem('token'),
 
           }
         case ACCOUNT_DELETED : 

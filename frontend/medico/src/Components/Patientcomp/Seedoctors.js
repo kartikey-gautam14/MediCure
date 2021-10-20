@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import {Card,CardContent} from '@material-ui/core';
 import axios from 'axios';
 
-function Doctors() {
+function Seedoctors() {
 
 
     
@@ -24,10 +24,10 @@ function Doctors() {
             Username : "jksjfk",
         }
     ])
-    const onClick = (e,key) =>{
+    const onClick = (e) =>{
         e.preventDefault();
         axios.post("http://localhost:5000/bookap",{
-            doctor:key,
+            
             Username:"meragalahaisurila"
     })
         .then((res)=>{
@@ -51,18 +51,18 @@ function Doctors() {
                 return <Card key = {data.doctor} >
                     <CardContent>
                     {data.Username}
-                    <button type = "submit" onClick = {(e)=>onClick(e,data.doctor)} >button</button>
+                    <button type = "submit" onClick = {(e)=>onClick(e)} >button</button>
                     </CardContent>
                 </Card>
             })}
 
 <div>
   <label for="formFileLg" class="form-label">Large file input example</label>
-  <input className="form-control form-control-lg" id="formFileLg" type="file" onchange = {upload}/>
+  <input className="form-control form-control-lg" id="formFileLg" type="file" onChange = {upload}/>
 </div>
             
         </div>
     )
 }
 
-export default Doctors
+export default Seedoctors;

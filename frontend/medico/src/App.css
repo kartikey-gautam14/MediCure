@@ -1,3 +1,29 @@
+.calender-component{
+     
+     margin-top: 120px;
+     margin-left : 60%;
+     
+
+}
+.calender-cards{
+    display:flex;
+    justify-content: space-between;
+    
+
+    
+    
+    
+}
+
+.calender-cards:nth-child(3) {
+    margin-right: 0%;
+}
+.update-profile{
+  margin-top : 100px; 
+  display : flex;
+  flex-direction: column;
+}
+
 :root {
     --primary-color: #17a2b8;
     --dark-color: #343a40;

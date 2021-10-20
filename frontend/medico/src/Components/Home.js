@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './Patientcomp/Navbar';
+import Navbar from './Patientcomp/PatientNavbar';
 
 function Home() {
     return (
