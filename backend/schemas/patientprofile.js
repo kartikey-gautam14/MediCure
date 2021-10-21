@@ -28,6 +28,11 @@ const userprofile = mongoose.Schema({
     BloodGroup: {
         type : String,
     },
+    Specialization : {
+        type : String,
+        
+
+    },
     Report_links :[{}],
 
 
