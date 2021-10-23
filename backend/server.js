@@ -13,6 +13,7 @@ const bookappointments = require('./routes/bookappointment');
 const uploadtopatient = require('./routes/uploadtopatient');
 const updateuserprofile = require('./routes/updateuserprofile');
 const updatedoctorprofile = require('./routes/updatedoctorprofile');
+const finddoctors = require('./routes/finddoctors');
 
 
 
@@ -43,6 +44,7 @@ app.use("/bookap",bookappointments);
 app.use("/uploadtop",uploadtopatient);
 app.use("/updateuserprofile",updateuserprofile);
 app.use("/updatedoctorprofile",updatedoctorprofile);
+app.use("/finddoctors",finddoctors);
 
 
 // //app.post("/login",(req,res)=>{
