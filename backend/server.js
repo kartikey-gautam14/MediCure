@@ -14,6 +14,7 @@ const uploadtopatient = require('./routes/uploadtopatient');
 const updateuserprofile = require('./routes/updateuserprofile');
 const updatedoctorprofile = require('./routes/updatedoctorprofile');
 const finddoctors = require('./routes/finddoctors');
+const doctorprofile = require('./routes/doctorprofiles');
 
 
 
@@ -45,6 +46,7 @@ app.use("/uploadtop",uploadtopatient);
 app.use("/updateuserprofile",updateuserprofile);
 app.use("/updatedoctorprofile",updatedoctorprofile);
 app.use("/finddoctors",finddoctors);
+app.use("/doctorprofiles",doctorprofile);
 
 
 // //app.post("/login",(req,res)=>{
