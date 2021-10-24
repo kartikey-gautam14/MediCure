@@ -52,7 +52,8 @@ function Seedoctors() {
          <input type="submit" className="btn btn-primary" value="Search" />
        </form>
         {doctors.map( (doctor) => {
-            return <DoctorcardComponent  key ={doctor.Name} name = {doctor.Name} specialization ={doctor.Specialization} description = {doctor.Description}/>
+            return <DoctorcardComponent  key ={doctor.Name} name = {doctor.Name} 
+            specialization ={doctor.Specialization} description = {doctor.Description} ID = {doctor.ID}/>
         })}
             
         </div>
