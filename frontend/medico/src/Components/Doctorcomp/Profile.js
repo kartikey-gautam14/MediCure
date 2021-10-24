@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React,{useState} from 'react';
 import {useParams} from 'react-router-dom';
+import DoctorcardComponent from '../Patientcomp/DoctorCardComponent';
 
 function Profile() {
     var {id}  = useParams();
@@ -12,9 +13,17 @@ function Profile() {
     },[]);
     return (
         <div>
+            <h1> Hello {doctor.Name}</h1>
+        <div className = "profile-card">
+            <DoctorcardComponent/>
+            <AvailableSlots/>
+        </div>
 
 
-            
+
+
+
+
 
 
 

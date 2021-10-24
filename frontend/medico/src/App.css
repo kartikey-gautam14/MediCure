@@ -18,6 +18,11 @@
 .calender-cards:nth-child(3) {
     margin-right: 0%;
 }
+.profile-card{
+  display : flex;
+  
+
+}
 .update-profile{
   margin-top : 100px; 
   display : flex;
