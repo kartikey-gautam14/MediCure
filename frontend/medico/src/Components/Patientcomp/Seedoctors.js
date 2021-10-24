@@ -53,7 +53,7 @@ function Seedoctors() {
        </form>
         {doctors.map( (doctor) => {
             return <DoctorcardComponent  key ={doctor.Name} name = {doctor.Name} 
-            specialization ={doctor.Specialization} description = {doctor.Description} ID = {doctor.ID}/>
+            specialization ={doctor.Specialization} description = {doctor.Description} ID = {doctor.id}/>
         })}
             
         </div>

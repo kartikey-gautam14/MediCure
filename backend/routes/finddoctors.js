@@ -26,7 +26,7 @@ check('specialization','Please enter a valid specialization').exists(),async (re
                 City : ob.Address.City,
                 State : ob.Address.State,
                 Specialization : ob.Specialization,
-                ID : ob.user
+                id : ob.user
             }
         })
         res.status(200).send(obj);
