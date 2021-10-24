@@ -16,7 +16,7 @@ function DoctorProfile() {
       start_time : "",
       end_time : "" 
     })
-    const {name,phone_no,gender,age,bloodgroup,pincode,specialization,start_time,end_time} = formdata;
+    const {name,phone_no,gender,age,bloodgroup,pincode,specialization,start_time,end_time,city,state} = formdata;
 
     const handlechange = (e) => {
       setformdata({...formdata,[e.target.name] : e.target.value});
@@ -34,10 +34,8 @@ function DoctorProfile() {
         gender : gender,
         pincode : pincode,
         bloodgroup : bloodgroup,
-        address : {
-          state :addressobj.data[0].State,
-          district : addressobj.data[0].District,
-        },
+        state :addressobj.data[0].PostOffice[0].State,
+        city : addressobj.data[0].PostOffice[0].District,
         specialization : specialization,
         start_time : start_time,
         end_time : end_time
@@ -102,8 +100,11 @@ function DoctorProfile() {
             />
               
           
-        <select name = "bloodgroup" placeholder = "enter your blood group" value = {bloodgroup} onChange = {handlechange} >
-
+        <select name = "bloodgroup" placeholder = "enter your blood group" value = {bloodgroup}
+        onChange={(e) => setformdata({...formdata,bloodgroup : e.target.value})} >
+        <option value="none" selected >
+          Select an Option for bloodgroup
+        </option>
         <option  value="A+">
           A+
         </option>
@@ -129,8 +130,11 @@ function DoctorProfile() {
           B-
         </option>
         </select>
-        <select name = "gender" placeholder = "enter your gender" value = {gender} onChange = {handlechange} >
-
+        <select name = "gender" placeholder = "enter your gender" value = {gender}
+        onChange={(e) => setformdata({...formdata,gender : e.target.value})} >
+        <option value="none" selected >
+          Select an Option for gender
+        </option>
         <option  value="male">
          male
         </option>

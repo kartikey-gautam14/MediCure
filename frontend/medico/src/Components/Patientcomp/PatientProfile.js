@@ -115,7 +115,9 @@ function PatientProfile() {
               
           
         <select name = "bloodgroup" placeholder = "enter your blood group" value = {bloodgroup} onChange = {handlechange} >
-
+        <option value="none" selected >
+          Select an Option for bloodgroup
+        </option>
         <option  value="A+">
           A+
         </option>
@@ -142,7 +144,9 @@ function PatientProfile() {
         </option>
         </select>
         <select name = "gender" placeholder = "enter your gender" value = {gender} onChange = {handlechange} >
-
+        <option value="none" selected >
+          Select an Option for gender
+        </option>
         <option  value="male">
          male
         </option>
