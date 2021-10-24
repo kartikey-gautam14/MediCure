@@ -88,6 +88,8 @@
             loading :true,
             
           }
+          default:
+            return state;
     }
 
   }
