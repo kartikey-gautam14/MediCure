@@ -13,6 +13,7 @@ import PRegister from './Components/Patientcomp/Register';
 import PLogin from './Components/Patientcomp/Login';
 import Dashboard from './Components/Doctorcomp/Dashboard';
 import Seedoctors from './Components/Patientcomp/Seedoctors';
+import Profile from './Components/Doctorcomp/Profile'
 import DoctorProfile from './Components/Doctorcomp/DoctorProfile';
 
 
@@ -45,6 +46,8 @@ function App() {
       <Route exact path = "/doctorauth/home" component = {Dashboard}/>
       <Route exact path = "/patientauth/home" component = {PatHome}/>
       <Route exact path = "/patientauth/seedoctors" component = {Seedoctors}/>
+      <Route path = "/doctorprofile/:id" component = {Profile}/>
+      {/* <Route exact path = "/doctorauth/home" component = {PatHome}/> */}
       <Route exact path = "/doctorauth/doctorprofile" component = {DoctorProfile}/>
       {/* <Doute Pxact path = "/doctorauth/home" component = {PatHome}/> */}
       <Route component = {DoctorRoutes}/>
